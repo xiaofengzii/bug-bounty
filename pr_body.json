@@ -1,0 +1,6 @@
+{
+  "title": "fix: return 400 for Zod validation errors instead of 500",
+  "head": "xiaofengzii:fix/zod-errors-400-5753",
+  "base": "main",
+  "body": "## Summary\nThis PR updates the global error handler to catch ZodError and return 400 with structured issues array instead of generic 500.\n\n## Changes\n- Catch ZodError in global error handler (`apps/api/src/middleware/errorHandler.js`)\n- Return 400 status code with structured `issues` array for validation errors\n- Update jobController to use parse (throw on error) instead of safeParse\n- Add tests for valid and invalid job creation payloads\n\n## Testing\n- All tests pass: `node --test src/tests/*.test.js`\n\n/claim #743\nCloses #5753"
+}
