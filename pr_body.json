@@ -1,6 +1,6 @@
 {
-  "title": "fix: restrict file upload size, type, and count",
-  "head": "xiaofengzii:fix/file-upload-restrictions-5759",
+  "title": "fix: add role-based access control to admin endpoints",
+  "head": "xiaofengzii:fix/admin-rbac-5758",
   "base": "main",
-  "body": "## Summary\nThis PR adds file upload size, type, and count restrictions.\n\n## Changes\n- Limit file size to 10MB max\n- Restrict accepted MIME types to images (jpeg, png, gif, webp) and documents (pdf, doc, docx, txt)\n- Return 400 for invalid uploads with descriptive error messages\n- Add tests for valid upload, oversized files, invalid file types, and no file\n\n## Testing\n- All tests pass: `node --test src/tests/upload.test.js`\n\n/claim #743\nCloses #5759"
+  "body": "## Summary\nThis PR adds role-based access control (RBAC) to admin endpoints.\n\n## Changes\n- Add `requireAdmin` middleware in `apps/api/src/middleware/auth.js` that checks `req.user.role === 'admin'`\n- Apply `requireAdmin` middleware to admin routes alongside existing `authMiddleware`\n- Return 403 with descriptive error for non-admin authenticated users\n- Add tests for admin access, missing token, and non-admin roles\n\n## Testing\n- All tests pass: `node --test src/tests/admin.test.js`\n\n/claim #743\nCloses #5758"
 }
