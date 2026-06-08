@@ -1,0 +1,6 @@
+{
+  "title": "fix: validate proposal creation payload with Zod schema",
+  "head": "xiaofengzii:fix/proposal-validation-5760",
+  "base": "main",
+  "body": "## Summary\nThis PR adds Zod schema validation for proposal creation payloads.\n\n## Changes\n- Add `createProposalSchema` in `apps/api/src/validators/proposal.js` requiring `jobId`, `coverLetter`, `estimatedDuration`, and `rate`\n- Validate payload in `proposalController.js` and return 400 for invalid/partial payloads\n- Add tests for valid input, missing fields, invalid rate, and extra fields\n\n## Testing\n- All tests pass: `node --test src/tests/proposal.test.js`\n\n/claim #743\nCloses #5760"
+}
