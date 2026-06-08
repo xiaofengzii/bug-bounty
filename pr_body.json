@@ -1,6 +1,6 @@
 {
-  "title": "fix: add role-based access control to admin endpoints",
-  "head": "xiaofengzii:fix/admin-rbac-5758",
+  "title": "fix: validate search query parameter minimum length",
+  "head": "xiaofengzii:fix/search-validation-5756",
   "base": "main",
-  "body": "## Summary\nThis PR adds role-based access control (RBAC) to admin endpoints.\n\n## Changes\n- Add `requireAdmin` middleware in `apps/api/src/middleware/auth.js` that checks `req.user.role === 'admin'`\n- Apply `requireAdmin` middleware to admin routes alongside existing `authMiddleware`\n- Return 403 with descriptive error for non-admin authenticated users\n- Add tests for admin access, missing token, and non-admin roles\n\n## Testing\n- All tests pass: `node --test src/tests/admin.test.js`\n\n/claim #743\nCloses #5758"
+  "body": "## Summary\nThis PR adds validation to enforce a minimum length for search queries.\n\n## Changes\n- Reject empty or single-character queries with 400 and a clear error message\n- Require at least 2 characters for any search query\n- Add tests for valid query, empty query, single character, and two character queries\n\n## Testing\n- All tests pass: `node --test src/tests/search.test.js`\n\n/claim #743\nCloses #5756"
 }
