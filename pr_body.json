@@ -1,6 +1,6 @@
 {
-  "title": "fix: validate message creation payload with Zod schema",
-  "head": "xiaofengzii:fix/message-validation-5755",
+  "title": "fix: validate user creation payload with Zod schema",
+  "head": "xiaofengzii:fix/user-validation-5754",
   "base": "main",
-  "body": "## Summary\nThis PR adds Zod schema validation for message creation payloads.\n\n## Changes\n- Add `createMessageSchema` in `apps/api/src/validators/message.js` accepting only `content`, `recipientId`, and `jobId`\n- Validate payload in `messageController.js` and return 400 for invalid payloads\n- System fields (id, sentAt) are server-assigned\n- Add tests for valid input, missing fields, extra fields, and empty content\n\n## Testing\n- All tests pass: `node --test src/tests/message.test.js`\n\n/claim #743\nCloses #5755"
+  "body": "## Summary\nThis PR adds Zod schema validation for user creation payloads.\n\n## Changes\n- Add `createUserSchema` in `apps/api/src/validators/user.js` accepting only `name`, `email`, and `password`\n- Validate payload in `userController.js` and return 400 for invalid payloads\n- System fields (id) are server-assigned\n- Add tests for valid input, missing fields, invalid email, short password, and extra fields\n\n## Testing\n- All tests pass: `node --test src/tests/user.test.js`\n\n/claim #743\nCloses #5754"
 }
