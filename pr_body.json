@@ -1,6 +1,6 @@
 {
-  "title": "fix: validate search query parameter minimum length",
-  "head": "xiaofengzii:fix/search-validation-5756",
+  "title": "fix: validate message creation payload with Zod schema",
+  "head": "xiaofengzii:fix/message-validation-5755",
   "base": "main",
-  "body": "## Summary\nThis PR adds validation to enforce a minimum length for search queries.\n\n## Changes\n- Reject empty or single-character queries with 400 and a clear error message\n- Require at least 2 characters for any search query\n- Add tests for valid query, empty query, single character, and two character queries\n\n## Testing\n- All tests pass: `node --test src/tests/search.test.js`\n\n/claim #743\nCloses #5756"
+  "body": "## Summary\nThis PR adds Zod schema validation for message creation payloads.\n\n## Changes\n- Add `createMessageSchema` in `apps/api/src/validators/message.js` accepting only `content`, `recipientId`, and `jobId`\n- Validate payload in `messageController.js` and return 400 for invalid payloads\n- System fields (id, sentAt) are server-assigned\n- Add tests for valid input, missing fields, extra fields, and empty content\n\n## Testing\n- All tests pass: `node --test src/tests/message.test.js`\n\n/claim #743\nCloses #5755"
 }
