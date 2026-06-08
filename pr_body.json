@@ -1,0 +1,6 @@
+{
+  "title": "fix: restrict file upload size, type, and count",
+  "head": "xiaofengzii:fix/file-upload-restrictions-5759",
+  "base": "main",
+  "body": "## Summary\nThis PR adds file upload size, type, and count restrictions.\n\n## Changes\n- Limit file size to 10MB max\n- Restrict accepted MIME types to images (jpeg, png, gif, webp) and documents (pdf, doc, docx, txt)\n- Return 400 for invalid uploads with descriptive error messages\n- Add tests for valid upload, oversized files, invalid file types, and no file\n\n## Testing\n- All tests pass: `node --test src/tests/upload.test.js`\n\n/claim #743\nCloses #5759"
+}
