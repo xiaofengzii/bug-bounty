@@ -1,6 +1,6 @@
 {
-  "title": "fix: validate user creation payload with Zod schema",
-  "head": "xiaofengzii:fix/user-validation-5754",
+  "title": "fix: return 400 for Zod validation errors instead of 500",
+  "head": "xiaofengzii:fix/zod-errors-400-5753",
   "base": "main",
-  "body": "## Summary\nThis PR adds Zod schema validation for user creation payloads.\n\n## Changes\n- Add `createUserSchema` in `apps/api/src/validators/user.js` accepting only `name`, `email`, and `password`\n- Validate payload in `userController.js` and return 400 for invalid payloads\n- System fields (id) are server-assigned\n- Add tests for valid input, missing fields, invalid email, short password, and extra fields\n\n## Testing\n- All tests pass: `node --test src/tests/user.test.js`\n\n/claim #743\nCloses #5754"
+  "body": "## Summary\nThis PR updates the global error handler to catch ZodError and return 400 with structured issues array instead of generic 500.\n\n## Changes\n- Catch ZodError in global error handler (`apps/api/src/middleware/errorHandler.js`)\n- Return 400 status code with structured `issues` array for validation errors\n- Update jobController to use parse (throw on error) instead of safeParse\n- Add tests for valid and invalid job creation payloads\n\n## Testing\n- All tests pass: `node --test src/tests/*.test.js`\n\n/claim #743\nCloses #5753"
 }
