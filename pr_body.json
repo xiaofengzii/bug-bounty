@@ -1,0 +1,6 @@
+{
+  "title": "fix: add role-based access control to admin endpoints",
+  "head": "xiaofengzii:fix/admin-rbac-5758",
+  "base": "main",
+  "body": "## Summary\nThis PR adds role-based access control (RBAC) to admin endpoints.\n\n## Changes\n- Add `requireAdmin` middleware in `apps/api/src/middleware/auth.js` that checks `req.user.role === 'admin'`\n- Apply `requireAdmin` middleware to admin routes alongside existing `authMiddleware`\n- Return 403 with descriptive error for non-admin authenticated users\n- Add tests for admin access, missing token, and non-admin roles\n\n## Testing\n- All tests pass: `node --test src/tests/admin.test.js`\n\n/claim #743\nCloses #5758"
+}
